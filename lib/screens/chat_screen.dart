@@ -6,7 +6,7 @@ import '../widgets/chat_bubble.dart';
 import '../widgets/chat_page_app_bar.dart';
 
 class ChatPage extends StatelessWidget {
-  ChatPage({super.key, required this.email});
+   ChatPage({super.key, required this.email});
 
   final String email;
 
@@ -26,7 +26,7 @@ class ChatPage extends StatelessWidget {
           List<Message> messageList = [];
           for (int i = 0; i < snapshot.data!.docs.length; i++) {
             messageList.add(Message.fromJson(snapshot.data!.docs[i]));
-          };
+          }
           return Scaffold(
 
             backgroundColor: Colors.white,
@@ -55,7 +55,7 @@ class ChatPage extends StatelessWidget {
                           )
                               : ChatBubble(
                             message: messageList[index],
-                            color: Color(0xff006D84),
+                            color: const Color(0xff006D84),
                             radius: const BorderRadius.only(
                                 topLeft: Radius.circular(32),
                                 topRight: Radius.circular(32),
@@ -67,16 +67,15 @@ class ChatPage extends StatelessWidget {
                           alignment: Alignment.bottomRight,
                           child: Padding(
                               padding: const EdgeInsets.only(right: 15.0),
-                              child: CircleAvatar(child: GestureDetector(
+                              child: CircleAvatar(backgroundColor: primaryColor,child: GestureDetector(
                                   onTap: () {
 
                                     _scrollDown();
 
                                   },
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.keyboard_arrow_down_rounded,
-                                    color: Colors.white,)),
-                                backgroundColor: primaryColor,),
+                                    color: Colors.white,)),),
                           )),
                     ],
                   ),
@@ -104,7 +103,7 @@ class ChatPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(
                                 18,
                               ),
-                              borderSide: BorderSide(color: primaryColor)),
+                              borderSide: const BorderSide(color: primaryColor)),
                           hintText: 'Type your message here…',
                           suffixIcon: GestureDetector(
                             onTap: () {
@@ -117,7 +116,7 @@ class ChatPage extends StatelessWidget {
                               controller.clear();
                               _scrollDown();
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.send_outlined,
                               color: Colors.indigo,
                             ),
@@ -131,7 +130,7 @@ class ChatPage extends StatelessWidget {
                               borderRadius: BorderRadius.circular(
                                 18,
                               ),
-                              borderSide: BorderSide(color: primaryColor)),
+                              borderSide: const BorderSide(color: primaryColor)),
                           hoverColor: Colors.black),
                     ))
               ],
@@ -155,7 +154,7 @@ class ChatPage extends StatelessWidget {
 
     _controller.animateTo(
       0,
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       curve: Curves.fastOutSlowIn,
     );
     // _controller.jumpTo(_controller.position.maxScrollExtent);
